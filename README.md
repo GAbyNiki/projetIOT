@@ -1,20 +1,20 @@
 # PROJETIOT
 
-Ce projet vise à faciliter l'intégration de dispositifs IoT avec Chirpstack en utilisant une combinaison d'un serveur Chirpstack, une API REST, et un serveur gRPC-REST.
+Ce projet vise à faciliter l'intégration de dispositifs IoT avec Chirpstack en utilisant une combinaison d'un serveur Chirpstack, une API REST, et un serveur chirpstack-rest-api.
 
 # Fonctionnalités
 Utilisation d'un serveur Chirpstack pour la gestion des dispositifs IoT.
 Communication avec Chirpstack via son API REST.
-Installation et utilisation d'un serveur gRPC-REST pour communiquer avec Chirpstack (qui ne supporte plus nativement gRPC depuis la version v4 de chirpstack).
+Installation et utilisation d'un serveur chirpstack-rest-api pour communiquer avec Chirpstack (qui ne supporte plus nativement REST depuis la version v4 de chirpstack).
 Implémentation en Python pour récupérer les informations d'un capteur à partir d'une webcam.
 Les informations récupérées (DEV EUI, APP EUI, APP KEY, APPSKEY, NETSKEY) sont enregistrées dans un fichier CSV.
 Un script Python supplémentaire utilise les informations du CSV pour enregistrer le dispositif dans le serveur Chirpstack.
 
 # Prérequis
 Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
-Serveur Chirpstack sous ubuntu
-Python
-Webcam
+Serveur Chirpstack
+Python ( librairie 
+Webcam ou téléphone 
 Serveur rest-grpc
 
 https://www.chirpstack.io/docs/chirpstack/downloads.html#debian--ubuntu-repositoryhttps://github.com/chirpstack/chirpstack-rest-api
@@ -46,14 +46,25 @@ sudo apt update
 sudo apt install chirpstack-rest-api
 
 ### configuration du serveur
-Il faut configurer le port et l'IP du serveur rest-api  et du serveur chirpstack
-Le plus simple est d'installer chirpstack-rest-api directement sur le serveur ou se trouve chirpstack 
-""/etc/chirpstack-rest-api/environment
+
+Il faut configurer le port et l'IP du serveur chirtsack-rest-api  et du serveur chirpstack
+Le plus simple est d'installer chirpstack-rest-api directement sur le serveur où se trouve chirpstack 
+Il faut modifier le fichier suivant :
+/etc/chirpstack-rest-api/environment
 
 BIND=0.0.0.0:8090
 SERVER=0.0.0.0:8080
 
+BIND = serveur chirpstack-rest-api
+SERVEUR = chirpstack
 "# Comment out to enable TLS
 INSECURE=true
 
+Attention : il faut que le port ne soit pas déjà en écoute.
+netstat -tuln 
+### Commande pour gerer le service 
 sudo systemctl [restart|start|stop] chirpstack-rest-api
+
+##Téléphone 
+
+
