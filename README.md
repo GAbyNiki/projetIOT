@@ -1,1 +1,59 @@
-# projetIOT
+# PROJETIOT
+
+Ce projet vise à faciliter l'intégration de dispositifs IoT avec Chirpstack en utilisant une combinaison d'un serveur Chirpstack, une API REST, et un serveur gRPC-REST.
+
+# Fonctionnalités
+Utilisation d'un serveur Chirpstack pour la gestion des dispositifs IoT.
+Communication avec Chirpstack via son API REST.
+Installation et utilisation d'un serveur gRPC-REST pour communiquer avec Chirpstack (qui ne supporte plus nativement gRPC depuis la version v4 de chirpstack).
+Implémentation en Python pour récupérer les informations d'un capteur à partir d'une webcam.
+Les informations récupérées (DEV EUI, APP EUI, APP KEY, APPSKEY, NETSKEY) sont enregistrées dans un fichier CSV.
+Un script Python supplémentaire utilise les informations du CSV pour enregistrer le dispositif dans le serveur Chirpstack.
+
+# Prérequis
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
+Serveur Chirpstack sous ubuntu
+Python
+Webcam
+Serveur rest-grpc
+
+https://www.chirpstack.io/docs/chirpstack/downloads.html#debian--ubuntu-repositoryhttps://github.com/chirpstack/chirpstack-rest-api
+c’est un logiciel qui transforme le code rest en grpc vers Rest 
+
+serveur chipstak : 192.168.170.223:8080
+
+api token : 
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjaGlycHN0YWNrIiwiaXNzIjoiY2hpcnBzdGFjayIsInN1YiI6IjBkNGU5NGU2LTExNGQtNGIxMC04YTlkLTA3MTViODE4Mzc0ZCIsInR5cCI6ImtleSJ9.oS3z2Dw1lSZ7s5r9QTl1kX9aHjQgqGiFSSsVs3BYTZc
+
+# Installation 
+
+## Serveur rest-grpc
+Depuis la version v4 de chirstack , l'api rest n'est plus pris en charge nativement.
+https://www.chirpstack.io/docs/chirpstack/api/rest.html
+
+Un projet GitLab existe qui permet de créer notre propre serveur chirpstack-rest-api qui permet de contourner le problème 
+https://github.com/chirpstack/chirpstack-rest-api?tab=readme-ov-file
+
+Dans notre projet nous avons décider d'utiliser les repos directement
+https://www.chirpstack.io/docs/chirpstack/downloads.html#debian--ubuntu-repositoryhttps://github.com/chirpstack/chirpstack-rest-api
+
+### Configuration pour récupérer le repos
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1CE2AFD36DBCCA00
+sudo echo "deb https://artifacts.chirpstack.io/packages/4.x/deb stable main" | sudo tee /etc/apt/sources.list.d/chirpstack_4.list
+sudo apt update
+### installation du serveur 
+
+sudo apt install chirpstack-rest-api
+
+### configuration du serveur
+Il faut configurer le port et l'IP du serveur rest-api  et du serveur chirpstack
+Le plus simple est d'installer chirpstack-rest-api directement sur le serveur ou se trouve chirpstack 
+""/etc/chirpstack-rest-api/environment
+
+BIND=0.0.0.0:8090
+SERVER=0.0.0.0:8080
+
+"# Comment out to enable TLS
+INSECURE=true
+
+sudo systemctl [restart|start|stop] chirpstack-rest-api
