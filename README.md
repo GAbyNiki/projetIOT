@@ -1,4 +1,4 @@
-# PROJETIOT
+# PROJET-IOT
 
 Ce projet vise à faciliter l'intégration de dispositifs IoT avec Chirpstack en utilisant une combinaison d'un serveur Chirpstack, une API REST, et un serveur chirpstack-rest-api.
 
