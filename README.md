@@ -77,6 +77,9 @@ Nous avons créé un exécutable exe qui permet de lancer les scripts même si p
 
 Nous avons plusieurs scripts
 
+### ocr-lorawan-devices.py
+
+
 
 
 ### get-devices.py
