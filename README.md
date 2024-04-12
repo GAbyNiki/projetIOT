@@ -1,5 +1,4 @@
-
-# PROJET-IOT
+# PROJET IOT
 
 Ce projet vise à faciliter l'intégration de dispositifs IoT avec Chirpstack en utilisant une combinaison d'un serveur Chirpstack, une API REST, et un serveur chirpstack-rest-api.
 
@@ -64,6 +63,15 @@ INSECURE=true
 
 Attention : il faut que le port ne soit pas déjà en écoute.
 netstat -tuln 
+
+### Génération de la clé API
+
+Pour générer une nouvelle clé API avec le token (ou bearer) associé, il faut se rendre sur l'interface web du server Chirpstack (@IP:8080 du serveur)
+
+- Sous la section "Network Server", sélectionner "API Keys", puis "Add API key".
+- Assigner un nom à la clé API puis faire "submit"
+- Le token (ou bearer) est ensuite affiché, il faut bien le sauvegarder car il sera affiché une seule fois, puis le renseigner dans le fichier informations.csv
+
 ### Commande pour gerer le service 
 sudo systemctl [restart|start|stop] chirpstack-rest-api
 
