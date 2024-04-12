@@ -26,14 +26,15 @@ headers = {
 }
 
 # Envoyer une requête GET pour récupérer les devices
-current_directory = os.path.dirname(os.path.abspath(__file__))
+current_directory = os.getcwd()
+print (current_directory)
 response = requests.get(url, params=params, headers=headers)
 
 if response.status_code == 200:
     devices = response.json()['result']  # Accéder aux résultats
 
     # Chemin complet pour le fichier CSV pour l'enregistrer dans le même répertoire que celui du script
-    csv_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'devices.csv')
+    csv_file_path = (current_directory+'\\devices.csv')
 
     # Écrire les données dans un fichier CSV
     with open(csv_file_path, mode='w', newline='') as file:
