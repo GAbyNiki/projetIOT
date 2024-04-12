@@ -82,6 +82,8 @@ Vous devez maintenant voir apparaître votre téléphone :
 
 ![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/78ba38f1-ab00-48f0-abc0-1821dad960fd)
 
+Il ne vous reste plus qu'à cliquer sur "Start" et lancer le code python !
+
 # Utilisation 
 
 Nous avons créé un exécutable exe qui permet de lancer les scripts même si python ou les librairies ne sont pas installé directement sur la machine
