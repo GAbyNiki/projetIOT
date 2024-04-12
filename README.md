@@ -112,7 +112,41 @@ En résumé ce code python permet de réaliser les actions suivantes :
 - lancer une requête de type OCR sur les images capturées pour y extraire le texte
 - parser et formater les données récupérées dans un fichier CSV pour une utilisation à postériori dans le script add-devices.py
 
-Pour l'utilisation du script il faut fournir 
+Nous utilisons l'API Google Cloud Vision, il s'agit de la solution qui a fournis les meilleures résultats dans nos différents tests pour la reconnaissance des caractères. Nous vous recommandons de consulter ces différentes documentations avant de continuer la procédure : https://cloud.google.com/vision/pricing?hl=fr et https://cloud.google.com/vision/docs/data-usage?hl=fr. Pour sa mise en place vous devez posséder un compte Google et vous connecter sur la console Google Cloud : https://console.cloud.google.com/ (Google exige l'ajout de sa CB, en terme Goolge il s'agit d'un "compte de facturation" pour utiliser leur API mais cela ne signifie pas que vous serez facturer si vous respecter les quotas d'utilisations de l'API). Une fois connecter créer un projet sur l'interface, par exemple OCR-LoraWan (cf. https://cloud.google.com/resource-manager/docs/creating-managing-projects?hl=fr).
+
+![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/43e6a495-7066-459c-848f-526045f6797a)
+
+Vous devez à présent activer l'API Google Cloud Vision, pour cela rendez-vous dans votre projet et dans le menu "API et services" :
+
+![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/06d127a9-9630-4a5f-91c6-0737964f44a9)
+
+Cliquer ensuite sur "Activer les API et les services" et renseigner dans la barre de recherche "cloud vision api" :
+
+![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/fcd74da1-a1c2-4b06-9cb5-bf162ec8dff5)
+
+Puis :
+
+![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/22f86ea2-81ae-4eec-9c5a-6b78ae0e3e0a)
+
+Et activer l'API :
+
+![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/7348d714-cd15-43a4-8798-bc246c91284f)
+
+Lors de l'activation de l'API un pop-up apparaîtra pour créer votre identifiant lié à l'API (si le pop-up n'apparaît pas rendez-vous dans le menu "identifiant" à gauche dans le menu), cet identifiant est nécessaire pour authentifier chaque requête envoyé par le script. ATTENTION : Choisissez bien un identifiant de type "compte de service" :
+
+![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/ee31b0b4-a57a-4f8a-98a5-30b0019c1050)
+
+Vous pouvez cliquer sur "continuer" ensuite jusqu'à la fin du "wizard".
+
+Cliquer sur le compte de service précédemment créé :
+
+![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/681f43f6-16ad-4484-981e-74bd68e66137)
+
+Et créer votre clé privée au format json :
+
+![image](https://github.com/GAbyNiki/projetIOT/assets/79327440/2aff62e5-0dba-4968-9842-b66f8cc670a6)
+
+Lorsque votre explorateur Windows s'ouvre pour sauvegarder la clé json, renommer la sous le nom "token.json" et stocker la dans la racine où se trouve le code "ocr-lorawan-devices.py".
 
 
 ### get-devices.py
