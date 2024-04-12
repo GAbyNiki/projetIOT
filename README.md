@@ -112,6 +112,8 @@ En résumé ce code python permet de réaliser les actions suivantes :
 - lancer une requête de type OCR sur les images capturées pour y extraire le texte
 - parser et formater les données récupérées dans un fichier CSV pour une utilisation à postériori dans le script add-devices.py
 
+Pour l'utilisation du script il faut fournir 
+
 
 ### get-devices.py
 
