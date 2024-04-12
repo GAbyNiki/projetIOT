@@ -9,9 +9,13 @@ from google.cloud import vision
 current_working_directory = os.getcwd()
 
 try:
-    os.path.exists(current_working_directory + 'token.json')
+    if not os.path.exists(current_working_directory + '\\token.json'):
+        raise FileNotFoundError("Le fichier token.json n'existe pas dans le dossier :" + current_working_directory + ". Veuillez vous assurer de fournir ce fichier en le téléchargeant sur votre profil Google Cloud et en le renommant token.json")
+except FileNotFoundError as e:
+    print(e)
+    exit()
 except Exception as e:
-    print("Le fichier token.json n'existe pas dans le dossier :" + current_working_directory + ". Veuillez vous assurer de fournir ce fichier en le téléchargeant sur votre profil Google Cloud et en le renommant token.json")
+    print("Une erreur s'est produite:", e)
 
 # Configuration des identifiants d'authentification pour la Vision API de Google
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'token.json'
@@ -87,11 +91,9 @@ def detect_text_and_save(image_path):
                                 symbol.text for symbol in word.symbols
                             ])
                             if word_text == dev_id:
-                                print(word_text, word.confidence)
                                 confidence.append(word.confidence)
                             for data in hexadecimal_data:
                                 if word_text == data:
-                                    print(word_text, word.confidence)
                                     confidence.append(word.confidence)
             i = 0
             # Affectation des confidences avec un avertissement si elles sont inférieures à 0.95
@@ -116,11 +118,10 @@ def detect_text_and_save(image_path):
                         app_key_confidence = f"{c*100:.2f}%"   
                 i += 1
 
-            # Impression des confiances et sauvegarde dans un fichier CSV
-            print(dev_id_confidence, dev_eui_confidence, app_eui_confidence, app_key_confidence)
+            # Enregistrement dans le CSV des informations récupérées via l'OCR
             save_to_csv(dev_id, dev_eui, app_eui, app_key, dev_id_confidence, dev_eui_confidence, app_eui_confidence, app_key_confidence)
         else:
-            raise ValueError("No text detected in the image.")
+            raise ValueError("Pas de texte détecté sur l'image")
         
     except FileNotFoundError:
         raise FileNotFoundError(f"Le fichier '{image_path}' n'existe pas.")
@@ -186,7 +187,7 @@ def open_camera(index_camera):
 
 # Demande à l'utilisateur de saisir l'index de la caméra
 while True:
-    index_camera = input("Entrez le numéro d'index de votre caméra, en général 0 correspond à la caméra intégrée de votre ordinateur, et 1 à la caméra externe: ")
+    index_camera = input("Entrez le numéro d'index de votre caméra, en général 0 correspond à la caméra intégrée de votre ordinateur, et 1 à la caméra externe (index compris entre 0 et 9): ")
     
     if index_camera.isdigit():
         if 0 <= int(index_camera) <= 9:
