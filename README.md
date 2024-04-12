@@ -41,11 +41,12 @@ https://www.chirpstack.io/docs/chirpstack/downloads.html#debian--ubuntu-reposito
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1CE2AFD36DBCCA00
 sudo echo "deb https://artifacts.chirpstack.io/packages/4.x/deb stable main" | sudo tee /etc/apt/sources.list.d/chirpstack_4.list
 sudo apt update
-### installation du serveur 
+
+### Installation du serveur 
 
 sudo apt install chirpstack-rest-api
 
-### configuration du serveur
+### Configuration du serveur
 
 Il faut configurer le port et l'IP du serveur chirtsack-rest-api  et du serveur chirpstack
 Le plus simple est d'installer chirpstack-rest-api directement sur le serveur où se trouve chirpstack 
@@ -65,6 +66,11 @@ netstat -tuln
 ### Commande pour gerer le service 
 sudo systemctl [restart|start|stop] chirpstack-rest-api
 
-## Téléphone 
+## Choix de la caméra
+Il est possible d'utiliser une webcam dédié ou directement votre téléphone, nous vous recommandons d'avoir à minima une qualité d'affiche en full hd en 1080p pour que l'OCR puisse être efficace.
+
+Si vous faites le choix d'une webcam, sa mise en place est plug and play, vous avez juste à la brancher à l'ordinateur et de choisir lors du lancement du script "ocr-lorawan-devices.py" le bon numéro d'index correspond à la caméra. En fonction du modèle de webcam utilisé et si elle le permet, vous pouvez installer le logiciel du constructeur pour la piloter, par exemple pour la webcam logitech C920, le logiciel "LogiTune" permet de régler certains paramètres à la volet telle que le focus, le zoom, le constraste etc...
+
+
 
 
