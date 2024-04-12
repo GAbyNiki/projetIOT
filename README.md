@@ -1,5 +1,4 @@
-
-# PROJET-IOT
+# PROJET IOT
 
 Ce projet vise à faciliter l'intégration de dispositifs IoT avec Chirpstack en utilisant une combinaison d'un serveur Chirpstack, une API REST, et un serveur chirpstack-rest-api.
 
@@ -39,9 +38,11 @@ Dans notre projet nous avons décider d'utiliser les repos directement
 https://www.chirpstack.io/docs/chirpstack/downloads.html#debian--ubuntu-repositoryhttps://github.com/chirpstack/chirpstack-rest-api
 
 ### Configuration pour récupérer le repos
+```bash
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1CE2AFD36DBCCA00
 sudo echo "deb https://artifacts.chirpstack.io/packages/4.x/deb stable main" | sudo tee /etc/apt/sources.list.d/chirpstack_4.list
 sudo apt update
+```
 
 ### Installation du serveur 
 
@@ -63,9 +64,22 @@ SERVEUR = chirpstack
 INSECURE=true
 
 Attention : il faut que le port ne soit pas déjà en écoute.
-netstat -tuln 
-### Commande pour gerer le service 
+```bash
+netstat -tuln
+```
+
+### Génération de la clé API
+
+Pour générer une nouvelle clé API avec le token (ou bearer) associé, il faut se rendre sur l'interface web du server Chirpstack (@IP:8080 du serveur)
+
+- Sous la section "Network Server", sélectionner "API Keys", puis "Add API key".
+- Assigner un nom à la clé API puis faire "submit"
+- Le token (ou bearer) est ensuite affiché, il faut bien le sauvegarder car il sera affiché une seule fois, puis le renseigner dans le fichier informations.csv
+
+### Commande pour gerer le service
+```bash
 sudo systemctl [restart|start|stop] chirpstack-rest-api
+```
 
 ## Choix de la caméra
 Il est possible d'utiliser une webcam dédié ou directement votre téléphone, nous vous recommandons d'avoir à minima une qualité d'affiche en full hd en 1080p pour que l'OCR puisse être efficace.
