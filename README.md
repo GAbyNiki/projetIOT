@@ -22,7 +22,7 @@ c’est un logiciel qui transforme le code rest en grpc vers Rest
 
 serveur chipstak : 192.168.170.223:8080
 
-api token : 
+api token (ou bearer) : 
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjaGlycHN0YWNrIiwiaXNzIjoiY2hpcnBzdGFjayIsInN1YiI6IjBkNGU5NGU2LTExNGQtNGIxMC04YTlkLTA3MTViODE4Mzc0ZCIsInR5cCI6ImtleSJ9.oS3z2Dw1lSZ7s5r9QTl1kX9aHjQgqGiFSSsVs3BYTZc
 
 # Installation 
