@@ -38,11 +38,11 @@ Dans notre projet nous avons décider d'utiliser les repos directement
 https://www.chirpstack.io/docs/chirpstack/downloads.html#debian--ubuntu-repositoryhttps://github.com/chirpstack/chirpstack-rest-api
 
 ### Configuration pour récupérer le repos
-'''bash
+```bash
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1CE2AFD36DBCCA00
 sudo echo "deb https://artifacts.chirpstack.io/packages/4.x/deb stable main" | sudo tee /etc/apt/sources.list.d/chirpstack_4.list
 sudo apt update
-'''
+```
 
 ### Installation du serveur 
 
