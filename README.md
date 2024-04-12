@@ -92,7 +92,11 @@ Nous avons plusieurs scripts
 
 ### ocr-lorawan-devices.py
 
-
+En résumé ce code python permet de réaliser les actions suivantes :
+- d'ouvrir un flux vidéo via une caméra externe
+- de prendre une capture d'écran à n'importe quel instant sur le flux vidéo récupérée
+- lancer une requête de type OCR sur les images capturées pour y extraire le texte
+- parser et formater les données récupérées dans un fichier CSV pour une utilisation à postériori dans le script add-devices.py
 
 
 ### get-devices.py
