@@ -64,7 +64,9 @@ SERVEUR = chirpstack
 INSECURE=true
 
 Attention : il faut que le port ne soit pas déjà en écoute.
-netstat -tuln 
+```bash
+netstat -tuln
+```
 
 ### Génération de la clé API
 
@@ -74,8 +76,10 @@ Pour générer une nouvelle clé API avec le token (ou bearer) associé, il faut
 - Assigner un nom à la clé API puis faire "submit"
 - Le token (ou bearer) est ensuite affiché, il faut bien le sauvegarder car il sera affiché une seule fois, puis le renseigner dans le fichier informations.csv
 
-### Commande pour gerer le service 
+### Commande pour gerer le service
+```bash
 sudo systemctl [restart|start|stop] chirpstack-rest-api
+```
 
 ## Choix de la caméra
 Il est possible d'utiliser une webcam dédié ou directement votre téléphone, nous vous recommandons d'avoir à minima une qualité d'affiche en full hd en 1080p pour que l'OCR puisse être efficace.
