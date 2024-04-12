@@ -71,6 +71,41 @@ Il est possible d'utiliser une webcam dédié ou directement votre téléphone, 
 
 Si vous faites le choix d'une webcam, sa mise en place est plug and play, vous avez juste à la brancher à l'ordinateur et de choisir lors du lancement du script "ocr-lorawan-devices.py" le bon numéro d'index correspond à la caméra. En fonction du modèle de webcam utilisé et si elle le permet, vous pouvez installer le logiciel du constructeur pour la piloter, par exemple pour la webcam logitech C920, le logiciel "LogiTune" permet de régler certains paramètres à la volet telle que le focus, le zoom, le constraste etc...
 
+# Utilisation 
+
+Nous avons créé un exécutable exe qui permet de lancer les scripts même si python ou les librairies ne sont pas installé directement sur la machine
+
+Nous avons plusieurs scripts
+
+
+
+### get-devices.py
+
+Permet de récupérer les informations de tous les devices du serveur chirpstack
+Cela crée un fichier devices.csv où se trouve les differentes informations des devices 
+
+devEui
+createdAt
+updatedAt
+lastSeenAt
+name
+description
+deviceProfileId
+deviceProfileName
+deviceStatus
+
+
+### add-devices.py
+Ce script permet à partir du fichier Informations.csv  et du fichier extracted_data.csv de remplir automatiquement les devices sur chirpstack.
+
+1 - rentrer les informations dans le fichier informations.txt. 
+SERVER_IP : l'adresse IP ou se trouve le serveur chirpstack
+BEARER : Le token API  du serveur chirpstack
+APP_ID : L'ID de l'application où les devices vont être provisionés
+PROFILE_ID : l'ID du PROFIL_ID
+
+2 - Lancer le script 
+
 
 
 
